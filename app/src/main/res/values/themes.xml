@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.AlbanianNews" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/pothuajse_gri</item>
+        <item name="colorPrimaryVariant">@color/e_zeze</item>
+        <item name="colorOnPrimary">@color/e_zeze</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/bardhe_portokalli_hapur</item>
+        <item name="colorSecondaryVariant">@color/kuqe</item>
+        <item name="colorOnSecondary">@color/vishnje_erret</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>
