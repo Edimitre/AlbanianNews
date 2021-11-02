@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
 
         btn_corruption.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, NewsReadActivity.class);
-            intent.putExtra("source", "corruption");
-            intent.putExtra("title", "pak korrupsion");
+            intent.putExtra("source", "ide");
+            intent.putExtra("title", "Te ndryshme");
             startActivity(intent);
 
         });

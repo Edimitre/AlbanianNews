@@ -37,7 +37,7 @@ public class ScrapService extends Service {
         scraper.scrapSyriNet();
         scraper.scrapJoq();
         scraper.scrapLapsi();
-        scraper.scrapCorruptionNews();
+        scraper.scrapIdeaNews();
 
         startForeground(1, AndroidSystemUtilities.serviceNotification(getApplicationContext()));
 

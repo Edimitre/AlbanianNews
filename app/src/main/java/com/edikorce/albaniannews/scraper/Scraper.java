@@ -3,6 +3,7 @@ package com.edikorce.albaniannews.scraper;
 import android.content.Context;
 import android.util.Log;
 
+
 import com.edikorce.albaniannews.database.Repository;
 import com.edikorce.albaniannews.entities.News;
 
@@ -15,6 +16,7 @@ public class Scraper {
 
     Context context;
     Repository repository;
+
 
 
 
@@ -139,7 +141,7 @@ public class Scraper {
 
     }
 
-    public void scrapCorruptionNews() {
+    public void scrapIdeaNews() {
         Thread thread  = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -148,7 +150,7 @@ public class Scraper {
 
                 // ngarko faqen html si dokument
                 try {
-                    html_page = Jsoup.connect("https://joq-albania.com/kategori/vec-e-jona.html").get();
+                    html_page = Jsoup.connect("https://joq-albania.com/kategori/ide.html").get();
                 } catch (Exception e) {
                     System.out.println("faqja nuk u gjend");
                 }
@@ -163,7 +165,7 @@ public class Scraper {
 
 
                     // pastrojme titullin nga budalleqet e faqes
-                    if (title_bruto.length() > 25) {
+                    if (title_bruto.length() > 30) {
 
                         String coruptionTitle = title_bruto.trim();
 
@@ -175,7 +177,7 @@ public class Scraper {
 
                             String corruptionParagraph = scrapTextFromLink(linku);
 
-                            News news = new News(coruptionTitle.toUpperCase(), corruptionParagraph, "corruption");
+                            News news = new News(coruptionTitle.toUpperCase(), corruptionParagraph, "ide");
 
                             repository.addNews(news);
 
@@ -203,12 +205,12 @@ public class Scraper {
                 try {
                     html_page = Jsoup.connect("https://lapsi.al/kategoria/ide/").get();
                 } catch (Exception e) {
-                    System.out.println("faqja nuk u gjend");
+                    Log.e("PageNotFound:", e.toString());
                 }
 
                 assert html_page != null;
 
-                Elements faqja = html_page.select("div[id=container]");
+                Elements faqja = html_page.select("div[id=main]");
 
                 Elements links = faqja.select("a[href]");
 
@@ -248,16 +250,14 @@ public class Scraper {
     public String scrapTextFromLink(String link) {
 
         Document html_page = null;
-
-        // ngarko faqen html si dokument
         try {
             html_page = Jsoup.connect(link).get();
         } catch (Exception e) {
-            System.out.println("faqja nuk u gjend");
+            Log.e("PageNotFound:", e.toString());
         }
-
         assert html_page != null;
         return html_page.select("p").text();
+
 
     }
 }
