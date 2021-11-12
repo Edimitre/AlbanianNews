@@ -41,10 +41,10 @@
                 android:layout_marginTop="16dp"/>
 
             <Button
-                android:id="@+id/btn_lapsi"
+                android:id="@+id/btn_bota"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="Lajme Nga Lapsi"
+                android:text="Lajme Nga Bota.al"
                 android:textSize="25sp"
                 app:layout_constraintTop_toBottomOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,19 @@
                 android:layout_height="80dp"
                 android:text="Lajme nga Joq"
                 android:textSize="25sp"
-                app:layout_constraintTop_toBottomOf="@+id/btn_lapsi"
+                app:layout_constraintTop_toBottomOf="@+id/btn_bota"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/btn_lapsi"
+                android:backgroundTint="?attr/colorPrimary"/>
+
+            <Button
+                android:id="@+id/btn_lapsi"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="Lajme Nga Lapsi.al"
+                android:textSize="25sp"
+                app:layout_constraintTop_toBottomOf="@+id/btn_joq"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/btn_syri"
@@ -68,21 +80,9 @@
                 android:id="@+id/btn_syri"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:text="Lajme Nga Syri"
+                android:text="Lajme nga Syri.net"
                 android:textSize="25sp"
-                app:layout_constraintTop_toBottomOf="@+id/btn_joq"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/btn_corruption"
-                android:backgroundTint="?attr/colorPrimary"/>
-
-            <Button
-                android:id="@+id/btn_corruption"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:text="Te Ndryshme"
-                android:textSize="25sp"
-                app:layout_constraintTop_toBottomOf="@+id/btn_syri"
+                app:layout_constraintTop_toBottomOf="@+id/btn_lapsi"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"

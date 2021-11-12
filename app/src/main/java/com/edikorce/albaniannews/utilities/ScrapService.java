@@ -2,9 +2,11 @@ package com.edikorce.albaniannews.utilities;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Build;
 import android.os.IBinder;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.edikorce.albaniannews.database.Repository;
 import com.edikorce.albaniannews.scraper.Scraper;
@@ -28,16 +30,16 @@ public class ScrapService extends Service {
         return null;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         repository.deleteAllNews();
 
-
+        scraper.scrapBotaAl();
+        scraper.scrapJetaOshQef();
+        scraper.scrapLapsiAl();
         scraper.scrapSyriNet();
-        scraper.scrapJoq();
-        scraper.scrapLapsi();
-        scraper.scrapIdeaNews();
 
         startForeground(1, AndroidSystemUtilities.serviceNotification(getApplicationContext()));
 

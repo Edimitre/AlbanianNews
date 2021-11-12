@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     Repository repository;
 
-    Button btn_syri, btn_joq, btn_corruption, btn_lapsi;
+    Button btn_botaal, btn_joq,  btn_lapsi, btn_syri;
 
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -67,11 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
 
+        btn_botaal = findViewById(R.id.btn_bota);
+
+        btn_joq = findViewById(R.id.btn_joq);
+
+        btn_lapsi = findViewById(R.id.btn_lapsi);
 
         btn_syri = findViewById(R.id.btn_syri);
-        btn_joq = findViewById(R.id.btn_joq);
-        btn_corruption = findViewById(R.id.btn_corruption);
-        btn_lapsi = findViewById(R.id.btn_lapsi);
     }
 
     private void setListeners(){
@@ -84,39 +86,35 @@ public class MainActivity extends AppCompatActivity {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-
-        btn_syri.setOnClickListener(v -> {
-
+        btn_botaal.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, NewsReadActivity.class);
-            intent.putExtra("source", "syri");
-            intent.putExtra("title", "syri.net");
+            intent.putExtra("source", "bota.al");
+            intent.putExtra("title", "Bota.al");
             startActivity(intent);
 
         });
-
         btn_joq.setOnClickListener(v -> {
 
             Intent intent = new Intent(MainActivity.this, NewsReadActivity.class);
-            intent.putExtra("source", "joq");
+            intent.putExtra("source", "jeta_osh_qef.al");
             intent.putExtra("title", "jetaOshQef");
             startActivity(intent);
 
 
         });
-
-        btn_corruption.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, NewsReadActivity.class);
-            intent.putExtra("source", "ide");
-            intent.putExtra("title", "Te ndryshme");
-            startActivity(intent);
-
-        });
-
         btn_lapsi.setOnClickListener(v -> {
 
             Intent intent = new Intent(MainActivity.this, NewsReadActivity.class);
-            intent.putExtra("source", "lapsi");
-            intent.putExtra("title", "lapsi.al");
+            intent.putExtra("source", "lapsi.al");
+            intent.putExtra("title", "Lapsi.al");
+            startActivity(intent);
+
+        });
+        btn_syri.setOnClickListener(v -> {
+
+            Intent intent = new Intent(MainActivity.this, NewsReadActivity.class);
+            intent.putExtra("source", "syri.net");
+            intent.putExtra("title", "syri.net");
             startActivity(intent);
 
         });
@@ -134,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             btn_joq.setEnabled(false);
             btn_joq.setText("Nuk Mund Te Vazhdojme Pa Internet");
 
-            btn_corruption.setEnabled(false);
+            btn_botaal.setEnabled(false);
             btn_syri.setEnabled(false);
         }
     }
