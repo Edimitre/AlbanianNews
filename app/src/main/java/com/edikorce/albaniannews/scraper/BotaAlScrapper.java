@@ -65,8 +65,13 @@ public class BotaAlScrapper {
             links = linksList.stream().distinct().collect(Collectors.toList());
         }
 
+        int i = 0;
         for (String link:links){
             populateNewsFromLink(link);
+            i+=1;
+            if(i==20){
+                return;
+            }
         }
 
     }
@@ -86,8 +91,6 @@ public class BotaAlScrapper {
 
         String title = html_page.select("h1").text();
         String paragraph = html_page.select("p").text();
-        System.out.println("Title : " + title);
-        System.out.println("Paragraph : " + paragraph);
 
         News news = new News(title, paragraph,  "bota.al");
 

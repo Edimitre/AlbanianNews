@@ -1,6 +1,7 @@
 package com.edikorce.albaniannews.scraper;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.edikorce.albaniannews.database.Repository;
 import com.edikorce.albaniannews.entities.News;
@@ -81,9 +82,12 @@ public class LapsiScraper {
 
         Document html_page = null;
 
+
         // ngarko faqen html si dokument
         try {
+
             html_page = Jsoup.connect(link).get();
+
         } catch (Exception e) {
             System.out.println("faqja nuk u gjend");
         }
@@ -91,11 +95,11 @@ public class LapsiScraper {
         assert html_page != null;
 
         String title = html_page.select("h1").text();
-        String paragraph = html_page.select("p").text();
-        System.out.println("Title : " + title);
-        System.out.println("Paragraph : " + paragraph.replace("identifikohu", ""));
+        String paragraph = html_page.select("p").text().replace("identifikohu", "")
+                .replace("Adresa juaj email s’do të bëhet publike. Koment Emër Email Sajt", "");
 
-        News news = new News(title, paragraph,  "lapsi.al");
+
+        News news = new News(title, paragraph, "lapsi.al");
 
         repository = new Repository(context);
         repository.addNews(news);

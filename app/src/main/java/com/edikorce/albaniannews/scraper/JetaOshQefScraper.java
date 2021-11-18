@@ -57,8 +57,7 @@ public class JetaOshQefScraper {
         assert html_page != null;
         String title = html_page.select("h1").text();
         String paragraph = html_page.select("p").text();
-        System.out.println("Title : " + title);
-        System.out.println("Paragraph : " + paragraph);
+
 
         News news = new News(title, paragraph,  "jeta_osh_qef.al");
 
