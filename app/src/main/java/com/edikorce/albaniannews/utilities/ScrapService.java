@@ -2,6 +2,7 @@ package com.edikorce.albaniannews.utilities;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
 
@@ -17,11 +18,15 @@ public class ScrapService extends Service {
 
     Repository repository;
 
+
+
     @Override
     public void onCreate() {
-        super.onCreate();
+
         scraper = new Scraper(getApplicationContext());
+
         repository = new Repository(getApplicationContext());
+        super.onCreate();
     }
 
     @Nullable
@@ -43,8 +48,11 @@ public class ScrapService extends Service {
 
         startForeground(1, AndroidSystemUtilities.serviceNotification(getApplicationContext()));
 
+
+
         stopSelf();
 
         return START_NOT_STICKY;
     }
+
 }

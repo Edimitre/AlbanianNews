@@ -14,6 +14,7 @@ import com.edikorce.albaniannews.R;
 import com.edikorce.albaniannews.database.Repository;
 import com.edikorce.albaniannews.entities.News;
 import com.edikorce.albaniannews.utilities.AndroidSystemUtilities;
+import com.edikorce.albaniannews.utilities.ScrapService;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     SwipeRefreshLayout swipeRefreshLayout;
 
+    Intent serviceIntent;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -65,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadObjects(){
 
+        serviceIntent = new Intent(getApplicationContext(), ScrapService.class);
+
+
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
 
         btn_botaal = findViewById(R.id.btn_bota);
@@ -76,16 +81,16 @@ public class MainActivity extends AppCompatActivity {
         btn_syri = findViewById(R.id.btn_syri);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void setListeners(){
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onRefresh() {
-                AndroidSystemUtilities.startScrapService(getApplicationContext());
-                swipeRefreshLayout.setRefreshing(false);
-            }
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+
+           AndroidSystemUtilities.startScrapService(getApplicationContext());
+           swipeRefreshLayout.setRefreshing(false);
+
         });
+
         btn_botaal.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, NewsReadActivity.class);
             intent.putExtra("source", "bota.al");
@@ -136,5 +141,6 @@ public class MainActivity extends AppCompatActivity {
             btn_syri.setEnabled(false);
         }
     }
+
 
 }

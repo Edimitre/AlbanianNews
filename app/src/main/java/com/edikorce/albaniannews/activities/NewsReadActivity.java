@@ -113,5 +113,4 @@ public class NewsReadActivity extends AppCompatActivity {
         }).attachToRecyclerView(recyclerView);
     }
 
-
 }

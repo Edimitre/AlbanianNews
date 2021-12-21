@@ -18,8 +18,6 @@ public class Repository {
 
     NewsDao newsDao;
 
-    public AndroidSystemUtilities systemUtilities;
-
     List<News> newsList = new ArrayList<>();
     List<News> allNewsList = new ArrayList<>();
 
@@ -97,6 +95,5 @@ public class Repository {
         return allNewsList;
 
     }
-
 
 }
